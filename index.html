@@ -1,96 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My Valentine 💖</title>
-    <style>
-        body {
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Comic Sans MS', cursive;
-            text-align: center;
-            overflow: hidden;
-        }
+<meta charset="UTF-8">
+<title>Valentine 💖</title>
 
-        .box {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Comic Sans MS', cursive;
+    overflow: hidden;
+}
 
-        h1 {
-            color: #ff4d6d;
-            margin-bottom: 30px;
-        }
+.box {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    z-index: 2;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
 
-        button {
-            padding: 12px 30px;
-            font-size: 18px;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            margin: 10px;
-        }
+h1 {
+    color: #ff2e63;
+    margin-bottom: 20px;
+}
 
-        #yesBtn {
-            background-color: #ff4d6d;
-            color: white;
-        }
+button {
+    padding: 12px 35px;
+    font-size: 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
 
-        #noBtn {
-            background-color: #999;
-            color: white;
-            position: absolute;
-        }
+#yesBtn {
+    background: #ff2e63;
+    color: white;
+}
 
-        #love {
-            display: none;
-            font-size: 24px;
-            color: #ff1e56;
-        }
-    </style>
+#noBtn {
+    background: #aaa;
+    color: white;
+    position: absolute;
+}
+
+#message {
+    display: none;
+    font-size: 22px;
+    color: #ff165d;
+}
+.photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+</style>
 </head>
+
 <body>
 
 <div class="box">
-    <h1>Will you be my Valentine? 💝</h1>
+    <img src="C:\Users\bhuje\Desktop\python training\myproject\us.jpeg" class="photo" alt="Us 💖">
+
+    <h1 id="typing"></h1>
+
     <button id="yesBtn">Yes ❤️</button>
     <button id="noBtn">No 💔</button>
 
-    <div id="love">
-        <p>💖 You make my world brighter every day 💖</p>
+    <h1 id="typing"></h1>
+
+    <button id="yesBtn">Yes ❤️</button>
+    <button id="noBtn">No 💔</button>
+
+    <div id="message">
+        <p>💖 You make my heart smile every day 💖</p>
         <p>🥰 I’m so lucky to have you 🥰</p>
-        <p>💑 Forever us 💑</p>
+        <p>💑 Forever Us 💑</p>
     </div>
 </div>
 
-<audio id="music">
-    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
-</audio>
+<!-- Add your own music here -->
+<audio id="music" src="E:\music\Ishq Wala Love Student Of The Year 320 Kbps.mp3"></audio>
 
 <script>
-    const noBtn = document.getElementById("noBtn");
-    const yesBtn = document.getElementById("yesBtn");
-    const love = document.getElementById("love");
-    const music = document.getElementById("music");
+/* ===== CHANGE NAME HERE ===== */
+const herName = "Prabisha";
 
-    noBtn.addEventListener("mouseover", () => {
-        const x = Math.random() * (window.innerWidth - 100);
-        const y = Math.random() * (window.innerHeight - 50);
-        noBtn.style.left = x + "px";
-        noBtn.style.top = y + "px";
-    });
+/* Typing animation */
+const text = `Will you be my Valentine, ${herName}? 💝`;
+let index = 0;
+const typing = document.getElementById("typing");
 
-    yesBtn.addEventListener("click", () => {
-        love.style.display = "block";
-        music.play();
-        yesBtn.style.display = "none";
-        noBtn.style.display = "none";
-    });
+function typeEffect() {
+    if (index < text.length) {
+        typing.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 80);
+    }
+}
+typeEffect();
+
+/* No button impossible */
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseover", () => {
+    noBtn.style.display = "none";
+});
+
+/* Yes button */
+const yesBtn = document.getElementById("yesBtn");
+const message = document.getElementById("message");
+const music = document.getElementById("music");
+
+yesBtn.addEventListener("click", () => {
+    message.style.display = "block";
+    yesBtn.style.display = "none";
+    noBtn.style.display = "none";
+    if (music.src) music.play();
+});
 </script>
 
 </body>
