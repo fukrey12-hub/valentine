@@ -83,9 +83,11 @@ button {
     <div id="message">
         <p>💖 You make my heart smile every day 💖</p>
         <p>🥰 I’m so lucky to have you 🥰</p>
+        You are my favorite notification 💌<br><br>
+        I may not be rich, but my love for you is priceless 💎❤️<br><br>
         <p>💑 Forever Us 💑</p>
 <a href="https://www.bensound.com/bensound-music/bensound-love.mp3" target="_blank" style="font-size:20px; color:#ff2e63;">
-    💖 Song playing💖</a>
+    💖 music playing💖</a>
 
     </div>
 </div>
@@ -94,6 +96,7 @@ button {
 <audio id="music" src="https://www.bensound.com/bensound-music/bensound-love.mp3"></audio>
 
 <script>
+    
 /* ===== CHANGE NAME HERE ===== */
 const herName = "Prabisha";
 
@@ -111,11 +114,13 @@ function typeEffect() {
 }
 typeEffect();
 
-/* No button impossible forever */
-const noBtn = document.getElementById("noBtn");
-noBtn.addEventListener("mouseover", () => {
-    noBtn.style.display = "none";
-});
+// NO button runs away 😄
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - noBtn.clientWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.clientHeight);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
 
 /* Yes button */
 const yesBtn = document.getElementById("yesBtn");
